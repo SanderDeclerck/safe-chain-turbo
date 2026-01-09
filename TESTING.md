@@ -85,3 +85,22 @@ This means unchanged packages won't re-run tests, making CI and local developmen
 ## Coverage
 
 Coverage reports are generated in the `coverage/` directory of each workspace and are included in Turbo's cache outputs.
+
+## Continuous Integration
+
+The CI workflow (`.github/workflows/ci.yml`) runs automatically on every push and pull request:
+
+### What Runs in CI
+
+1. **Lint** - Code quality checks
+2. **Type Check** - TypeScript type validation
+3. **Build** - Builds all packages
+4. **Test** - Runs all tests
+5. **Coverage** - Generates coverage reports
+
+### CI Features
+
+- **Dependency caching** - Uses pnpm's built-in caching for faster installs
+- **Frozen lockfile** - Ensures reproducible builds with `--frozen-lockfile`
+- **Parallel execution** - Turbo runs tests in parallel across packages
+- **Coverage artifacts** - Coverage reports are uploaded and accessible from the Actions tab for 30 days
